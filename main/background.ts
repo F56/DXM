@@ -10,6 +10,14 @@ import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from "electron-devtools-installer";
 import Store from "electron-store";
+import updateApp from "update-electron-app";
+import logger from "electron-log";
+
+updateApp({
+  repo: "F56/DXM",
+  updateInterval: "1 hour",
+  logger: logger,
+});
 
 const appStore = new Store({
   name: "appStore",
