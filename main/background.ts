@@ -15,7 +15,7 @@ import logger from "electron-log";
 
 updateApp({
   repo: "F56/DXM",
-  updateInterval: "1 hour",
+  updateInterval: "5 minutes",
   logger: logger,
 });
 
