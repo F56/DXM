@@ -7,6 +7,7 @@ import { PortalWithState } from "react-portal";
 import Image from "next/image";
 import { useSearchMoviesQuery } from "../redux/api/api";
 import { HashLoader } from "react-spinners";
+import Link from "next/link";
 
 const Search: NextPage = () => {
   const router = useRouter();
@@ -76,49 +77,16 @@ const Search: NextPage = () => {
         <div className="container mx-auto flex flex-row flex-wrap gap-4 items-start justify-center">
           {data.query.map((movie: any) => (
             <div className="flex flex-col w-[150px] pb-6" key={movie.id}>
-              <PortalWithState closeOnOutsideClick closeOnEsc>
-                {({ openPortal, closePortal, portal }) => (
-                  <>
-                    <div
-                      className="relative w-full h-[225px] bg-teal-300 rounded-md cursor-pointer"
-                      onClick={openPortal}
-                    >
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                        layout="fill"
-                        objectFit="fill"
-                        className="rounded-md"
-                      />
-                    </div>
-                    {portal(
-                      <>
-                        <div className="absolute top-12 right-0 bottom-0 w-full bg-black/50 filter z-30 backdrop-blur-md" />
-                        <div className="absolute container top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 bg-gray-900 rounded-md h-[600px]">
-                          <div className="flex flex-col relative w-full h-full">
-                            <div className="flex flex-row w-full px-4 py-2 items-center justify-between bg-gray-800 rounded-t-md">
-                              <span />
-                              <span className="tracking-tighter font-bold">
-                                {movie.title}
-                              </span>
-                              <button
-                                className="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center hover:bg-gray-700 transition-all ease-in-out"
-                                onClick={closePortal}
-                              >
-                                <XMarkIcon className="w-4 h-4 text-white" />
-                              </button>
-                            </div>
-                            <MovieDetails
-                              movie_id={movie.id}
-                              query_term={movie.external_ids.imdb_id}
-                            />
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </>
-                )}
-              </PortalWithState>
-
+              <Link href={`/movie/${movie.id}/${movie.external_ids.imdb_id}`}>
+                <div className="relative w-full h-[225px] bg-teal-300 rounded-md cursor-pointer">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                    layout="fill"
+                    objectFit="fill"
+                    className="rounded-md"
+                  />
+                </div>
+              </Link>
               <div className="flex flex-col mt-3">
                 <h4
                   className={`${
