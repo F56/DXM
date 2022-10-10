@@ -61,41 +61,6 @@ function Home() {
                         laudantium, inventore soluta assumenda voluptatum
                         officia rem officiis.
                       </p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut, alias numquam! Commodi ipsa nam debitis
-                        magnam, rerum a sint placeat, totam repudiandae
-                        laudantium, inventore soluta assumenda voluptatum
-                        officia rem officiis.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut, alias numquam! Commodi ipsa nam debitis
-                        magnam, rerum a sint placeat, totam repudiandae
-                        laudantium, inventore soluta assumenda voluptatum
-                        officia rem officiis.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut, alias numquam! Commodi ipsa nam debitis
-                        magnam, rerum a sint placeat, totam repudiandae
-                        laudantium, inventore soluta assumenda voluptatum
-                        officia rem officiis.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut, alias numquam! Commodi ipsa nam debitis
-                        magnam, rerum a sint placeat, totam repudiandae
-                        laudantium, inventore soluta assumenda voluptatum
-                        officia rem officiis.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut, alias numquam! Commodi ipsa nam debitis
-                        magnam, rerum a sint placeat, totam repudiandae
-                        laudantium, inventore soluta assumenda voluptatum
-                        officia rem officiis.
-                      </p>
                     </div>
                     <div className="flex flex-row gap-4 items-center justify-end">
                       <button
