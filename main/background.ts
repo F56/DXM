@@ -13,12 +13,6 @@ import Store from "electron-store";
 import updateApp from "update-electron-app";
 import logger from "electron-log";
 
-updateApp({
-  repo: "F56/DXM",
-  updateInterval: "5 minutes",
-  logger: logger,
-});
-
 const appStore = new Store({
   name: "appStore",
   schema: {
@@ -33,6 +27,11 @@ const isProd: boolean = process.env.NODE_ENV === "production";
 
 if (isProd) {
   serve({ directory: "app" });
+  updateApp({
+    repo: "F56/DXM",
+    updateInterval: "5 minutes",
+    logger: logger,
+  });
 } else {
   app.setPath("userData", `${app.getPath("userData")} (development)`);
 }
