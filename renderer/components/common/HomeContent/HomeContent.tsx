@@ -1,13 +1,27 @@
 import React from "react";
+import AnimeTrending from "../Anime/AnimeTrending/AnimeTrending";
 import HomeGenres from "../HomeGenres/HomeGenres";
 import MovieSlider from "../MovieSlider/MovieSlider";
 
 const HomeContent: React.FC<{
   popularMovies: any;
   topRatedMovies: any;
-}> = ({ popularMovies, topRatedMovies }) => {
+  animeTrending: any;
+}> = ({ popularMovies, topRatedMovies, animeTrending }) => {
   return (
     <>
+      <div className="container mx-auto flex flex-col z-20">
+        <div className="grid grid-cols-3 gap-10">
+          <div className="flex flex-col col-span-3">
+            <div className=" filter backdrop-blur-sm flex flex-col">
+              <AnimeTrending data={animeTrending} />
+            </div>
+          </div>
+          {/* <div className="col-span-1">
+            <HomeGenres />
+          </div> */}
+        </div>
+      </div>
       <div className="container mx-auto flex flex-col z-20">
         <div className="grid grid-cols-3 gap-10">
           <div className="flex flex-col col-span-3">

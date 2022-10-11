@@ -11,6 +11,7 @@ import { destroy } from "./controllers/movies/destroy";
 import search from "./controllers/movies/search";
 import network from "./controllers/connect/network";
 import client from "./utils/webtorrent";
+import { trending } from "./controllers/anime";
 
 const app = express();
 
@@ -30,6 +31,7 @@ export const startServer = (cb: any) => {
   app.get("/movies/all", movies);
   app.get("/movies/search", search);
   app.get("/connect/network", network);
+  app.get("/anime/trending", trending);
   console.log(os.tmpdir());
   server = app.listen(port, cb);
 };

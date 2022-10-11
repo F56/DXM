@@ -15,9 +15,16 @@ interface SearchMovies {
   query: any[];
 }
 
+export interface AnimeTrending {
+  trending: any[];
+  latest: any[];
+  top: any[];
+}
+
 export type MovieDetailsResponse = MovieDetails;
 export type MoviesPortalResponse = MoviesPortal;
 export type SearchMoviesResponse = SearchMovies;
+export type AnimeTrendingResponse = AnimeTrending;
 
 export const dxmApi = createApi({
   reducerPath: "DXM_API",
@@ -42,6 +49,9 @@ export const dxmApi = createApi({
     searchMovies: builder.query<SearchMoviesResponse, string>({
       query: (query) => `movies/search?query=${query}&page=1`,
     }),
+    getAnimeTrending: builder.query<AnimeTrendingResponse, void>({
+      query: () => `anime/trending`,
+    }),
   }),
 });
 
@@ -50,5 +60,6 @@ export const {
   useGetMovieDetailsQuery,
   useGetNetworkStatusQuery,
   useSearchMoviesQuery,
+  useGetAnimeTrendingQuery,
 } = dxmApi;
 export const { endpoints, reducerPath, reducer, middleware } = dxmApi;

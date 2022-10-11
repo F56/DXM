@@ -1,7 +1,10 @@
 import React from "react";
 import HomeHeader from "../components/common/HomeHeader/HomeHeader";
 import HomeContent from "../components/common/HomeContent/HomeContent";
-import { useGetMoviesPortalByPageQuery } from "../redux/api/api";
+import {
+  useGetAnimeTrendingQuery,
+  useGetMoviesPortalByPageQuery,
+} from "../redux/api/api";
 import { XCircle } from "react-feather";
 import Footer from "../components/app/Footer/Footer";
 import { PortalWithState } from "react-portal";
@@ -12,23 +15,29 @@ function Home() {
   const ref = React.useRef<any>(null);
   const { data, isLoading, isError, isSuccess } =
     useGetMoviesPortalByPageQuery("1");
+  const {
+    data: animeData,
+    isLoading: animeIsLoading,
+    isError: animeIsError,
+    isSuccess: animeIsSuccess,
+  } = useGetAnimeTrendingQuery();
   React.useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || animeIsSuccess) {
       ipcRenderer.invoke("get-store", "disclaimer").then((value) => {
         if (!value) {
           ref.current.openPortal();
         }
       });
     }
-  }, [isSuccess]);
+  }, [isSuccess, animeIsSuccess]);
 
-  if (isLoading)
+  if (isLoading || animeIsLoading)
     return (
       <div className="flex flex-col gap-5 items-center justify-center flex-1">
         <HashLoader color="#36d7b7" size={100} />
       </div>
     );
-  if (isError)
+  if (isError || animeIsError)
     return (
       <div className="flex flex-col gap-5 items-center justify-center flex-1">
         <div className="flex flex-row gap-4 items-center justify-center">
@@ -95,6 +104,7 @@ function Home() {
       <HomeContent
         popularMovies={data.trending}
         topRatedMovies={data.topRated}
+        animeTrending={animeData}
       />
       <Footer />
     </div>
